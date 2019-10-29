@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorCurrentTime">#94D64A</color>
+    <color name="colorBackgroundTopView">#F0F0F0</color>
+    <color name="colorBackgroundFixedRow">#54FFC11B</color>
 </resources>

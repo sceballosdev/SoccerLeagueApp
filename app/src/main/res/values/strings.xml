@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">SoccerLeagueApp</string>
     <string name="str_live_title">En vivo</string>
+    <string name="str_statistics">Estadísticas</string>
     <string name="str_img_content_description">En vivo</string>
+    <string name="str_head_row_team">Equipo</string>
 </resources>
