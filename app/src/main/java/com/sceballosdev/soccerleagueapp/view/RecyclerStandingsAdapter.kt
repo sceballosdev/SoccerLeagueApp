@@ -52,8 +52,6 @@ class RecyclerStandingsAdapter(var standingViewModel: StandingViewModel, var res
             binding?.setVariable(BR.position, position)
             binding?.executePendingBindings()
         }
-
-
     }
 
 }

@@ -6,25 +6,26 @@ import java.io.Serializable
 class Standing(standingJson: JsonObject?) : Serializable {
     lateinit var id: String
     lateinit var team: Team
-    var totalMatches: Int = 0
-    var wonMatches: Int = 0
-    var lostMatches: Int = 0
-    var drawnMatches: Int = 0
-    var totalPoints: Int = 0
+    lateinit var totalMatches: String
+    lateinit var wonMatches: String
+    lateinit var lostMatches: String
+    lateinit var drawnMatches: String
+    lateinit var totalPoints: String
 
     init {
         try {
             id = standingJson?.get(ID)?.asString ?: "00"
-            totalMatches = standingJson?.get(TOTAL_MATCHES)?.asInt
-                ?: 0
-            wonMatches = standingJson?.get(WON_MATCHES)?.asInt
-                ?: 0
-            lostMatches = standingJson?.get(LOST_MATCHES)?.asInt
-                ?: 0
-            drawnMatches = standingJson?.get(DRAWN_MATCHES)?.asInt
-                ?: 0
-            totalPoints = standingJson?.get(TOTAL_POINTS)?.asInt
-                ?: 0
+            team = Team(standingJson?.getAsJsonObject(TEAM))
+            totalMatches = standingJson?.get(TOTAL_MATCHES)?.asString
+                ?: "0"
+            wonMatches = standingJson?.get(WON_MATCHES)?.asString
+                ?: "0"
+            lostMatches = standingJson?.get(LOST_MATCHES)?.asString
+                ?: "0"
+            drawnMatches = standingJson?.get(DRAWN_MATCHES)?.asString
+                ?: "0"
+            totalPoints = standingJson?.get(TOTAL_POINTS)?.asString
+                ?: "0"
         } catch (e: Exception) {
             e.printStackTrace()
         }

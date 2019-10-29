@@ -1,22 +1,28 @@
 package com.sceballosdev.soccerleagueapp.viewmodel
 
+import android.util.Log
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Standing
 import com.sceballosdev.soccerleagueapp.model.observables.StandingObservable
 import com.sceballosdev.soccerleagueapp.view.RecyclerStandingsAdapter
+import com.squareup.picasso.Picasso
 
-class StandingViewModel : ViewModel(){
+
+class StandingViewModel : ViewModel() {
     private var standingObservable: StandingObservable = StandingObservable()
     private var recyclerStandingsAdapter: RecyclerStandingsAdapter? = null
     var selected: MutableLiveData<Standing> = MutableLiveData()
 
-    fun callStandings(){
+    fun callStandings() {
+        Log.i("STEVEN", "entra al callStandings en el view model")
         standingObservable.callStandings()
     }
 
-    fun getStandings(): MutableLiveData<List<Standing>>{
+    fun getStandings(): MutableLiveData<List<Standing>> {
         return standingObservable.getStandings()
     }
 
@@ -26,7 +32,8 @@ class StandingViewModel : ViewModel(){
     }
 
     fun getRecyclerStandingsAdapter(): RecyclerStandingsAdapter? {
-        recyclerStandingsAdapter = RecyclerStandingsAdapter(this, R.layout.custom_item_standing_team)
+        recyclerStandingsAdapter =
+            RecyclerStandingsAdapter(this, R.layout.custom_item_standing_team)
         return recyclerStandingsAdapter
     }
 
@@ -43,4 +50,10 @@ class StandingViewModel : ViewModel(){
         val standing = getStandingAt(index)
         selected.value = standing
     }
+}
+
+@BindingAdapter("imageUrl")
+fun getImageStandingAt(imgShield: ImageView, imageUrl: String) {
+    Log.i("STEVEN", imageUrl)
+    Picasso.get().load(imageUrl).into(imgShield)
 }

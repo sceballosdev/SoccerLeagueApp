@@ -5,9 +5,13 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Standing
 import com.sceballosdev.soccerleagueapp.viewmodel.StandingViewModel
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +22,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
 
+
+        val llm = LinearLayoutManager(this)
+        llm.orientation = LinearLayoutManager.VERTICAL
+
+        rvStandings.layoutManager = llm
+
         // View
         setUpBindings(savedInstanceState)
     }
@@ -26,16 +36,20 @@ class MainActivity : AppCompatActivity() {
         val activityMainBinding: com.sceballosdev.soccerleagueapp.databinding.ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        standingViewModel = ViewModelProviders.of(this).get(StandingViewModel::class.java)
+
         activityMainBinding.model = standingViewModel
         setUpListUpdate()
     }
 
     fun setUpListUpdate() {
+
+        Log.i("STEVEN", "entra al setUpListUpdate")
         //CallCoupons
         standingViewModel?.callStandings()
         //getCoupons - Lista de cupones
         standingViewModel?.getStandings()?.observe(this, Observer { standings: List<Standing> ->
-            Log.w("STANDING", standings.get(0).team.name)
+            Log.i("STEVEN", standings.get(0).team.name)
             standingViewModel?.setStandingsInRecyclerAdapter(standings)
         })
         setupListClick()
