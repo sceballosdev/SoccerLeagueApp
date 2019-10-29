@@ -26,7 +26,7 @@ class StandingViewModel : ViewModel(){
     }
 
     fun getRecyclerStandingsAdapter(): RecyclerStandingsAdapter? {
-        recyclerStandingsAdapter = RecyclerStandingsAdapter(this, R.layout.custom_item_statistic_team)
+        recyclerStandingsAdapter = RecyclerStandingsAdapter(this, R.layout.custom_item_standing_team)
         return recyclerStandingsAdapter
     }
 

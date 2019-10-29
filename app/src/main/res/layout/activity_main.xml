@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="model"
             type="com.sceballosdev.soccerleagueapp.viewmodel.StandingViewModel" />
@@ -23,10 +24,10 @@
 
             <TextView
                 android:id="@+id/txt_title_screen"
+                style="@style/style_txt_titles"
                 android:text="@string/str_live_title"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                style="@style/style_txt_titles" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/current_match_list"
@@ -78,9 +79,7 @@
 
                     <TextView
                         android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        style="@style/style_text_header_standing"
                         android:text="@string/str_head_row_team"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +87,7 @@
 
                     <TextView
                         android:id="@+id/textView7"
+                        style="@style/style_text_header_standing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -98,6 +98,7 @@
 
                     <TextView
                         android:id="@+id/textView8"
+                        style="@style/style_text_header_standing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -108,6 +109,7 @@
 
                     <TextView
                         android:id="@+id/textView9"
+                        style="@style/style_text_header_standing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
@@ -119,6 +121,7 @@
 
                     <TextView
                         android:id="@+id/textView10"
+                        style="@style/style_text_header_standing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="32dp"
@@ -130,6 +133,7 @@
 
                     <TextView
                         android:id="@+id/textView11"
+                        style="@style/style_text_header_standing"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="24dp"
@@ -146,13 +150,13 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/cardView2"
                 app:layout_constraintStart_toStartOf="@+id/cardView2"
                 app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                tools:listitem="@layout/custom_item_standing_team" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </LinearLayout>
 </layout>
