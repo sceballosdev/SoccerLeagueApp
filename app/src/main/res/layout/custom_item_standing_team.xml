@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -17,9 +16,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/container_item_standing_team"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginBottom="5dp"
-        app:cardBackgroundColor="@color/colorBackgroundTopView"
+        android:layout_height="40dp"
+        app:cardBackgroundColor="@{position % 2 != 0 ? @color/colorBackgroundTopView : @color/colorBackgroundTranparent }"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
 
@@ -31,9 +29,10 @@
                 android:id="@+id/imageView"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="8dp"
+                android:contentDescription="@string/str_content_description"
                 app:imageUrl="@{model.getStandingAt(position).team.shield}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +40,7 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:text="@{model.getStandingAt(position).team.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -84,7 +83,7 @@
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="24dp"
                 android:text="@{model.getStandingAt(position).lostMatches}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textView11"
@@ -94,8 +93,9 @@
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="16dp"
                 android:text="@{model.getStandingAt(position).totalPoints}"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
