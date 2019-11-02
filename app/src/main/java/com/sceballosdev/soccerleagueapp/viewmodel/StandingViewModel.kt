@@ -1,6 +1,5 @@
 package com.sceballosdev.soccerleagueapp.viewmodel
 
-import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
@@ -18,7 +17,6 @@ class StandingViewModel : ViewModel() {
     var selected: MutableLiveData<Standing> = MutableLiveData()
 
     fun callStandings() {
-        Log.i("STEVEN", "entra al callStandings en el view model")
         standingObservable.callStandings()
     }
 
@@ -54,6 +52,5 @@ class StandingViewModel : ViewModel() {
 
 @BindingAdapter("imageUrl")
 fun getImageStandingAt(imgShield: ImageView, imageUrl: String) {
-    Log.i("STEVEN", imageUrl)
     Picasso.get().load(imageUrl).into(imgShield)
 }

@@ -1,10 +1,8 @@
 package com.sceballosdev.soccerleagueapp.model.repositories
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
-import com.google.gson.JsonObject
 import com.sceballosdev.soccerleagueapp.model.Standing
 import com.sceballosdev.soccerleagueapp.model.retrofit.ApiAdapter
 import retrofit2.Call
@@ -20,7 +18,6 @@ class StandingRepositoryImpl : StandingRepository {
     }
 
     override fun callStandingsAPI() {
-        Log.i("STEVEN", "entra al callStandingsAPI en el repositorio")
         val standingsList: ArrayList<Standing>? = ArrayList()
         val apiAdapter = ApiAdapter()
         val apiService = apiAdapter.getClientService()
@@ -28,13 +25,11 @@ class StandingRepositoryImpl : StandingRepository {
 
         call.enqueue(object : Callback<JsonArray> {
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {
-                Log.e("ERROR: ", t.message?:"errorsito")
                 t.stackTrace
             }
 
             override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
-                Log.i("STEVEN", "entra al onresponse "+response.body().toString())
-                val offersJsonArray = response.body()?.getAsJsonArray()
+                val offersJsonArray = response.body()?.asJsonArray
                 offersJsonArray?.forEach { jsonElement: JsonElement ->
                     val jsonObject = jsonElement.asJsonObject
                     val standing = Standing(jsonObject)

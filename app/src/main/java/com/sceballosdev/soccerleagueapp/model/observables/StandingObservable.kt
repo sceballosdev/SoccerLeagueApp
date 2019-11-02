@@ -1,6 +1,5 @@
 package com.sceballosdev.soccerleagueapp.model.observables
 
-import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.lifecycle.MutableLiveData
 import com.sceballosdev.soccerleagueapp.model.Standing
@@ -12,7 +11,6 @@ class StandingObservable : BaseObservable() {
 
     // Repositorio
     fun callStandings() {
-        Log.i("STEVEN", "entra al callStandings en el observable")
         standingRepository.callStandingsAPI()
     }
 

@@ -1,7 +1,5 @@
 package com.sceballosdev.soccerleagueapp.model.retrofit
 
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,7 +9,6 @@ class ApiAdapter {
     val urlApi = "http://${IP}:${PORT}/"
 
     fun getClientService(): ApiService {
-
 
         val retrofit = Retrofit.Builder()
             .baseUrl(urlApi)
