@@ -7,14 +7,14 @@
 
         <variable
             name="model"
-            type="com.sceballosdev.soccerleagueapp.viewmodel.StandingViewModel" />
+            type="com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.MainActivity">
+        tools:context=".view.activities.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

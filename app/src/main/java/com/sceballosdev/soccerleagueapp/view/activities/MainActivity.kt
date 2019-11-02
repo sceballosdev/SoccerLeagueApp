@@ -1,5 +1,6 @@
-package com.sceballosdev.soccerleagueapp.view
+package com.sceballosdev.soccerleagueapp.view.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -8,8 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sceballosdev.soccerleagueapp.R
+import com.sceballosdev.soccerleagueapp.databinding.ActivityMainBinding
 import com.sceballosdev.soccerleagueapp.model.Standing
-import com.sceballosdev.soccerleagueapp.viewmodel.StandingViewModel
+import com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpBindings(savedInstanceState: Bundle?) {
-        val activityMainBinding: com.sceballosdev.soccerleagueapp.databinding.ActivityMainBinding =
+        val activityMainBinding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         standingViewModel = ViewModelProviders.of(this).get(StandingViewModel::class.java)
@@ -43,13 +45,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setUpListUpdate() {
-
-        Log.i("STEVEN", "entra al setUpListUpdate")
-        //CallCoupons
+        //CallStandings
         standingViewModel?.callStandings()
-        //getCoupons - Lista de cupones
+        //getStandings - Lista de estadisticas de los equipos
         standingViewModel?.getStandings()?.observe(this, Observer { standings: List<Standing> ->
-            Log.i("STEVEN", standings.get(0).team.name)
             standingViewModel?.setStandingsInRecyclerAdapter(standings)
         })
         setupListClick()
@@ -58,8 +57,9 @@ class MainActivity : AppCompatActivity() {
     fun setupListClick() {
         standingViewModel?.getStandingSelected()?.observe(this,
             Observer { standing: Standing ->
-                Log.i("CLICK", standing.team.name)
-
+                val teamIntent = Intent(applicationContext, TeamDetailActivity::class.java)
+                teamIntent.putExtra("TEAM", standing.team)
+                startActivity(teamIntent)
             })
     }
 }

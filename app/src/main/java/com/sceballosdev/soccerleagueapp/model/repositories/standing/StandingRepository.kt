@@ -1,4 +1,4 @@
-package com.sceballosdev.soccerleagueapp.model.repositories
+package com.sceballosdev.soccerleagueapp.model.repositories.standing
 
 import androidx.lifecycle.MutableLiveData
 import com.sceballosdev.soccerleagueapp.model.Standing

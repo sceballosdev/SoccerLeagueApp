@@ -6,10 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.sceballosdev.soccerleagueapp.model.Standing
-import com.sceballosdev.soccerleagueapp.viewmodel.StandingViewModel
+import com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel
 import com.sceballosdev.soccerleagueapp.BR
 
-class RecyclerStandingsAdapter(var standingViewModel: StandingViewModel, var resource: Int) : androidx.recyclerview.widget.RecyclerView.Adapter<RecyclerStandingsAdapter.CardStandingHolder>() {
+class RecyclerStandingsAdapter(var standingViewModel: StandingViewModel, var resource: Int) : RecyclerView.Adapter<RecyclerStandingsAdapter.CardStandingHolder>() {
 
     var standings: List<Standing>? = null
 

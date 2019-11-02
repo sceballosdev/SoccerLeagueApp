@@ -1,4 +1,4 @@
-package com.sceballosdev.soccerleagueapp.model.repositories
+package com.sceballosdev.soccerleagueapp.model.repositories.standing
 
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
@@ -9,7 +9,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StandingRepositoryImpl : StandingRepository {
+class StandingRepositoryImpl :
+    StandingRepository {
 
     private var standings = MutableLiveData<List<Standing>>()
 
@@ -19,8 +20,7 @@ class StandingRepositoryImpl : StandingRepository {
 
     override fun callStandingsAPI() {
         val standingsList: ArrayList<Standing>? = ArrayList()
-        val apiAdapter = ApiAdapter()
-        val apiService = apiAdapter.getClientService()
+        val apiService = ApiAdapter().getClientService()
         val call = apiService.getStandings()
 
         call.enqueue(object : Callback<JsonArray> {

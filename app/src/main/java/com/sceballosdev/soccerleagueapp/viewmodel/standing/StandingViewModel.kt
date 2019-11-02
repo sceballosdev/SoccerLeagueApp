@@ -1,4 +1,4 @@
-package com.sceballosdev.soccerleagueapp.viewmodel
+package com.sceballosdev.soccerleagueapp.viewmodel.standing
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -6,13 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Standing
-import com.sceballosdev.soccerleagueapp.model.observables.StandingObservable
+import com.sceballosdev.soccerleagueapp.model.observables.standing.StandingObservable
 import com.sceballosdev.soccerleagueapp.view.RecyclerStandingsAdapter
 import com.squareup.picasso.Picasso
 
 
 class StandingViewModel : ViewModel() {
-    private var standingObservable: StandingObservable = StandingObservable()
+    private var standingObservable: StandingObservable =
+        StandingObservable()
     private var recyclerStandingsAdapter: RecyclerStandingsAdapter? = null
     var selected: MutableLiveData<Standing> = MutableLiveData()
 
@@ -50,7 +51,7 @@ class StandingViewModel : ViewModel() {
     }
 }
 
-@BindingAdapter("imageUrl")
+@BindingAdapter("imageUrlShield")
 fun getImageStandingAt(imgShield: ImageView, imageUrl: String) {
     Picasso.get().load(imageUrl).into(imgShield)
 }

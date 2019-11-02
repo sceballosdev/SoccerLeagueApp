@@ -10,13 +10,14 @@
 
         <variable
             name="model"
-            type="com.sceballosdev.soccerleagueapp.viewmodel.StandingViewModel" />
+            type="com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/container_item_standing_team"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:onClick="@{() -> model.onItemClick(position)}"
         app:cardBackgroundColor="@{position % 2 != 0 ? @color/colorBackgroundTopView : @color/colorBackgroundTranparent }"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp">
