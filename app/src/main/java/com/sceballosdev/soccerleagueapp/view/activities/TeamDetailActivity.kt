@@ -1,6 +1,7 @@
 package com.sceballosdev.soccerleagueapp.view.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -21,6 +22,7 @@ class TeamDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_team_detail)
+        supportActionBar?.hide()
 
         // get Param by Extras
         teamSelected = intent.getSerializableExtra("TEAM") as Team
@@ -43,7 +45,7 @@ class TeamDetailActivity : AppCompatActivity() {
         setUpListUpdate()
     }
 
-    fun setUpListUpdate() {
+    private fun setUpListUpdate() {
 
         //CallPlayersByTeam
         teamDetailViewModel?.callPlayersByTeamAPI(teamSelected?.id)
@@ -53,4 +55,7 @@ class TeamDetailActivity : AppCompatActivity() {
         })
     }
 
+    fun onClickBtnClose(view: View) {
+        finish()
+    }
 }
