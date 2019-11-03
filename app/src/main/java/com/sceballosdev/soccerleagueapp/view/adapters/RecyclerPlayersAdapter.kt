@@ -9,7 +9,7 @@ import com.sceballosdev.soccerleagueapp.BR
 import com.sceballosdev.soccerleagueapp.model.Player
 import com.sceballosdev.soccerleagueapp.viewmodel.teamdetail.TeamDetailViewModel
 
-class RecyclerPlayersAdapter(var teamDetailViewModel: TeamDetailViewModel, var resource: Int) : androidx.recyclerview.widget.RecyclerView.Adapter<RecyclerPlayersAdapter.CardPlayerHolder>() {
+class RecyclerPlayersAdapter(var teamDetailViewModel: TeamDetailViewModel, var resource: Int) : RecyclerView.Adapter<RecyclerPlayersAdapter.CardPlayerHolder>() {
 
     var players: List<Player>? = null
 

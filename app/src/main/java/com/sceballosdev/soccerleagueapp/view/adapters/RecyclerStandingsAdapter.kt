@@ -1,4 +1,4 @@
-package com.sceballosdev.soccerleagueapp.view
+package com.sceballosdev.soccerleagueapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

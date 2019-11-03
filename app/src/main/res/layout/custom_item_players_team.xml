@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="position"
+            type="Integer" />
 
         <variable
             name="model"
             type="com.sceballosdev.soccerleagueapp.viewmodel.teamdetail.TeamDetailViewModel" />
-
-        <variable
-            name="position"
-            type="Integer" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -31,7 +30,7 @@
                 android:layout_height="25dp"
                 android:layout_marginStart="8dp"
                 android:contentDescription="@string/str_content_description"
-                app:imageUrl="@{model.getPlayerAt(position).team.shield}"
+                app:imageUrlNationality="@{model.getPlayerAt(position).team.shield}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

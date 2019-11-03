@@ -1,5 +1,6 @@
 package com.sceballosdev.soccerleagueapp.model.observables.teamdetail
 
+import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.lifecycle.MutableLiveData
 import com.sceballosdev.soccerleagueapp.model.Player
@@ -12,6 +13,7 @@ class TeamDetailObservable : BaseObservable() {
 
     // Repositorio
     fun callPlayersByTeamAPI(team_id : String?){
+        Log.i("STEVEN", "ID TEAM OBSERVABLE " + team_id)
         teamDetailRepository.callPlayersByTeamAPI(team_id)
     }
 

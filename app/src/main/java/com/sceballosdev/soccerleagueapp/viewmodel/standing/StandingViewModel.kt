@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Standing
 import com.sceballosdev.soccerleagueapp.model.observables.standing.StandingObservable
-import com.sceballosdev.soccerleagueapp.view.RecyclerStandingsAdapter
+import com.sceballosdev.soccerleagueapp.view.adapters.RecyclerStandingsAdapter
 import com.squareup.picasso.Picasso
 
 

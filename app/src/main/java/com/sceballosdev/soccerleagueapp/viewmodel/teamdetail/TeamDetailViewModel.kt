@@ -1,5 +1,6 @@
 package com.sceballosdev.soccerleagueapp.viewmodel.teamdetail
 
+import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
@@ -17,6 +18,7 @@ class TeamDetailViewModel : ViewModel() {
 
 
     fun callPlayersByTeamAPI(team_api: String?) {
+        Log.i("STEVEN", "ID TEAM VIEWMODEL " + team_api)
         teamDetailObservable.callPlayersByTeamAPI(team_api)
     }
 

@@ -1,6 +1,7 @@
 package com.sceballosdev.soccerleagueapp.view.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -29,7 +30,8 @@ class TeamDetailActivity : AppCompatActivity() {
 
     private fun setUpBindings(savedInstanceState: Bundle?) {
 
-        val activityTeamDetailBinding: ActivityTeamDetailBinding = DataBindingUtil.setContentView(this, R.layout.activity_team_detail)
+        val activityTeamDetailBinding: ActivityTeamDetailBinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_team_detail)
 
         teamDetailViewModel = ViewModelProviders.of(this).get(TeamDetailViewModel::class.java)
 
@@ -40,6 +42,7 @@ class TeamDetailActivity : AppCompatActivity() {
 
     fun setUpListUpdate() {
 
+        Log.i("STEVEN", "ID TEAM " + teamSelected?.id)
         //CallPlayersByTeam
         teamDetailViewModel?.callPlayersByTeamAPI(teamSelected?.id)
         //getPlayersByTeam - Lista de jugadores
