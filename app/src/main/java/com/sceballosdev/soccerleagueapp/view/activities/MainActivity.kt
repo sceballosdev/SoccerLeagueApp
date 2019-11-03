@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.nkzawa.socketio.client.IO
+import com.github.nkzawa.socketio.client.Socket
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.databinding.ActivityMainBinding
 import com.sceballosdev.soccerleagueapp.model.Standing
@@ -18,11 +20,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var standingViewModel: StandingViewModel? = null
+    private var mSocket:Socket? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+
+        mSocket = IO.socket("http://:3000")
+        mSocket!!.connect()
 
         // View
         setUpBindings(savedInstanceState)
@@ -38,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         setUpListUpdate()
     }
 
-    fun setUpListUpdate() {
+    private fun setUpListUpdate() {
         //CallStandings
         standingViewModel?.callStandings()
         //getStandings - Lista de estadisticas de los equipos
