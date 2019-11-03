@@ -18,7 +18,6 @@ class TeamDetailViewModel : ViewModel() {
 
 
     fun callPlayersByTeamAPI(team_api: String?) {
-        Log.i("STEVEN", "ID TEAM VIEWMODEL " + team_api)
         teamDetailObservable.callPlayersByTeamAPI(team_api)
     }
 

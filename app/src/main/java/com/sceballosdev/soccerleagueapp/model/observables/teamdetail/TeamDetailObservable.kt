@@ -13,7 +13,6 @@ class TeamDetailObservable : BaseObservable() {
 
     // Repositorio
     fun callPlayersByTeamAPI(team_id : String?){
-        Log.i("STEVEN", "ID TEAM OBSERVABLE " + team_id)
         teamDetailRepository.callPlayersByTeamAPI(team_id)
     }
 

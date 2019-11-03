@@ -1,7 +1,6 @@
 package com.sceballosdev.soccerleagueapp.view.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -11,6 +10,8 @@ import com.sceballosdev.soccerleagueapp.databinding.ActivityTeamDetailBinding
 import com.sceballosdev.soccerleagueapp.model.Player
 import com.sceballosdev.soccerleagueapp.model.Team
 import com.sceballosdev.soccerleagueapp.viewmodel.teamdetail.TeamDetailViewModel
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_team_detail.*
 
 class TeamDetailActivity : AppCompatActivity() {
 
@@ -37,12 +38,13 @@ class TeamDetailActivity : AppCompatActivity() {
 
         activityTeamDetailBinding.model = teamDetailViewModel
         activityTeamDetailBinding.team = teamSelected
+        Picasso.get().load(teamSelected?.shield).into(imgSelectedTeam)
+
         setUpListUpdate()
     }
 
     fun setUpListUpdate() {
 
-        Log.i("STEVEN", "ID TEAM " + teamSelected?.id)
         //CallPlayersByTeam
         teamDetailViewModel?.callPlayersByTeamAPI(teamSelected?.id)
         //getPlayersByTeam - Lista de jugadores

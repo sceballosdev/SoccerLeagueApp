@@ -26,9 +26,9 @@
             android:background="@color/colorBackgroundTopView">
 
             <ImageView
-                android:id="@+id/imgLocalTeam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgSelectedTeam"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/str_img_content_description"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -38,16 +38,16 @@
                 />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/tvSelectedTeam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="@{team.name}"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imgLocalTeam"
-                app:layout_constraintStart_toEndOf="@+id/imgLocalTeam"
-                app:layout_constraintTop_toTopOf="@+id/imgLocalTeam" />
+                app:layout_constraintBottom_toBottomOf="@+id/imgSelectedTeam"
+                app:layout_constraintStart_toEndOf="@+id/imgSelectedTeam"
+                app:layout_constraintTop_toTopOf="@+id/imgSelectedTeam" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -68,7 +68,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvStandings"
+                android:id="@+id/rvPlayers"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"

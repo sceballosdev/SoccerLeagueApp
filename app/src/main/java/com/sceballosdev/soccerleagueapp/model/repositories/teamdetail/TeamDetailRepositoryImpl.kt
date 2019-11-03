@@ -19,19 +19,16 @@ class TeamDetailRepositoryImpl : TeamDetailRepository {
     }
 
     override fun callPlayersByTeamAPI(team_id: String?) {
-        Log.i("STEVEN", "ID TEAM REPOSITORY " + team_id)
         val playersList: ArrayList<Player>? = ArrayList()
         val apiService = ApiAdapter().getClientService()
         val call = apiService.getPlayersByTeam(team_id ?: "")
 
         call.enqueue(object : Callback<JsonArray> {
             override fun onFailure(call: Call<JsonArray>, t: Throwable) {
-                Log.i("STEVEN", "ON FAILURE " + t.message)
                 t.stackTrace
             }
 
             override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
-                Log.i("STEVEN", "ON RESPONSE " + response.body().toString())
                 val playersJsonArray = response.body()?.asJsonArray
                 playersJsonArray?.forEach { jsonElement: JsonElement ->
                     val jsonObject = jsonElement.asJsonObject
