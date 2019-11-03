@@ -8,6 +8,10 @@
         <variable
             name="model"
             type="com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel" />
+
+        <variable
+            name="result"
+            type="com.sceballosdev.soccerleagueapp.viewmodel.onlineresults.ResultViewModel" />
     </data>
 
     <LinearLayout
@@ -36,12 +40,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/txt_title_screen"
                 app:layout_constraintTop_toBottomOf="@+id/txt_title_screen"
-                app:reverseLayout="false"
-                tools:itemCount="1"
-                tools:listitem="@layout/custom_item_current_match" />
+                app:setAdapter="@{result.recyclerResultsAdapter}" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -155,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/cardView2"
                 app:layout_constraintStart_toStartOf="@+id/cardView2"
                 app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                app:setAdapter="@{model.recyclerStandingsAdapter}"/>
+                app:setAdapter="@{model.recyclerStandingsAdapter}" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
