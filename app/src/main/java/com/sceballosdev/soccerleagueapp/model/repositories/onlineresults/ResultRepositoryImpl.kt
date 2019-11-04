@@ -1,6 +1,5 @@
 package com.sceballosdev.soccerleagueapp.model.repositories.onlineresults
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
@@ -18,9 +17,9 @@ class ResultRepositoryImpl : ResultRepository {
 
     private var mSocket: Socket? = null
     private var online_results = MutableLiveData<List<Result>>()
+    private var resultsList: ArrayList<Result>? = ArrayList()
 
     override fun callResultsAPI() {
-        val resultsList: ArrayList<Result>? = ArrayList()
         val apiService = ApiAdapter().getClientService()
         val call = apiService.getOnlineResults()
 
@@ -36,26 +35,41 @@ class ResultRepositoryImpl : ResultRepository {
                     val result = Result(jsonObject)
                     resultsList?.add(result)
                 }
-                //VIEW
                 online_results.value = resultsList
             }
         })
+        initSocket()
     }
 
     override fun initSocket() {
-        val resultsList: ArrayList<Result>? = ArrayList()
 
         mSocket = IO.socket("http://130.211.215.145:3000")
         mSocket!!.connect()
         mSocket!!.on("updateTournamentResult") { args ->
 
-            Thread(Runnable {
-                val gsonObject = JsonParser().parse(args[0].toString()) as JsonObject
-                Log.i("STEVEN", "GSON OBJECT " + gsonObject.toString())
-                val result = Result(gsonObject)
+            val jsonObject = JsonParser().parse(args[0].toString()) as JsonObject
+            val result = Result(jsonObject)
+
+            var position: Int = -1
+
+            resultsList?.forEachIndexed { index, element ->
+                if (element.id == result.id) {
+                    position = index
+                    element.localTeam = result.localTeam
+                    element.visitorTeam = result.visitorTeam
+                    element.localGoals = result.localGoals
+                    element.visitorGoals = result.visitorGoals
+                    element.isPlaying = result.isPlaying
+                    element.currentTime = result.currentTime
+                    return@forEachIndexed
+                }
+            }
+
+            if (position == -1) {
                 resultsList?.add(result)
-                online_results.value = resultsList
-            }).start()
+            }
+
+            online_results.postValue(resultsList)
         }
     }
 

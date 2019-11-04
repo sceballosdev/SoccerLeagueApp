@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpListUpdate() {
 
+        Log.i("Aquí vamos", "Aquí vamos")
+
         resultViewModel?.callResultsAPI()
         resultViewModel?.getOnlineResults()?.observe(this, Observer { online_results: List<Result> ->
             resultViewModel?.setResultsInRecyclerAdapter(online_results)

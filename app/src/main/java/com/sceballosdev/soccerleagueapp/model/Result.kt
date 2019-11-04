@@ -13,8 +13,6 @@ class Result(resultJson: JsonObject?) : Serializable {
     var isPlaying: Boolean = false
     lateinit var currentTime: String
 
-
-
     init {
         try {
             id = resultJson?.get(ID)?.asString ?: "00"
