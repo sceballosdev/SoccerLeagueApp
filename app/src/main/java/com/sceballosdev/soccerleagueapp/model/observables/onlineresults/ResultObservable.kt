@@ -14,6 +14,10 @@ class ResultObservable: BaseObservable() {
         resultRepository.initSocket()
     }
 
+    fun callResultsAPI(){
+        resultRepository.callResultsAPI()
+    }
+
     // ViewModel
     fun getOnlineResults(): MutableLiveData<List<Result>> {
         return resultRepository.getOnlineResults()

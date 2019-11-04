@@ -1,11 +1,15 @@
 package com.sceballosdev.soccerleagueapp.viewmodel.onlineresults
 
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Result
 import com.sceballosdev.soccerleagueapp.model.observables.onlineresults.ResultObservable
 import com.sceballosdev.soccerleagueapp.view.adapters.RecyclerResultsAdapter
+import com.squareup.picasso.Picasso
 
 class ResultViewModel : ViewModel() {
     private var resultObservable: ResultObservable = ResultObservable()
@@ -14,6 +18,10 @@ class ResultViewModel : ViewModel() {
 
     fun initSocket() {
         resultObservable.initSocket()
+    }
+
+    fun callResultsAPI() {
+        resultObservable.callResultsAPI()
     }
 
     fun getOnlineResults(): MutableLiveData<List<Result>> {
@@ -44,4 +52,9 @@ class ResultViewModel : ViewModel() {
         val result = getResultAt(index)
         selected.value = result
     }
+}
+
+@BindingAdapter("imageUrlShieldOnline")
+fun getImageResultAt(imgShieldOnline: ImageView, imageUrl: String) {
+    Picasso.get().load(imageUrl).into(imgShieldOnline)
 }

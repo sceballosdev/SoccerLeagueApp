@@ -29,8 +29,8 @@ class StandingRepositoryImpl :
             }
 
             override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
-                val offersJsonArray = response.body()?.asJsonArray
-                offersJsonArray?.forEach { jsonElement: JsonElement ->
+                val standingsJsonArray = response.body()?.asJsonArray
+                standingsJsonArray?.forEach { jsonElement: JsonElement ->
                     val jsonObject = jsonElement.asJsonObject
                     val standing = Standing(jsonObject)
                     standingsList?.add(standing)

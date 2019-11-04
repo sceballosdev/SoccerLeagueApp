@@ -49,7 +49,7 @@ class RecyclerResultsAdapter(var resultViewModel: ResultViewModel, var resource:
         }
 
         fun setDataCard(resultViewModel: ResultViewModel, position: Int) {
-            binding?.setVariable(BR.model, resultViewModel)
+            binding?.setVariable(BR.model_result, resultViewModel)
             binding?.setVariable(BR.position, position)
             binding?.executePendingBindings()
         }

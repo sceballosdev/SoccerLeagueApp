@@ -1,5 +1,6 @@
 package com.sceballosdev.soccerleagueapp.model
 
+import android.util.Log
 import com.google.gson.JsonObject
 import java.io.Serializable
 
@@ -11,6 +12,8 @@ class Result(resultJson: JsonObject?) : Serializable {
     lateinit var visitorGoals: String
     var isPlaying: Boolean = false
     lateinit var currentTime: String
+
+
 
     init {
         try {

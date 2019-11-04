@@ -2,24 +2,30 @@ package com.sceballosdev.soccerleagueapp.view.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.nkzawa.emitter.Emitter
+import com.github.nkzawa.socketio.client.IO
+import com.github.nkzawa.socketio.client.Socket
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.databinding.ActivityMainBinding
 import com.sceballosdev.soccerleagueapp.model.Result
 import com.sceballosdev.soccerleagueapp.model.Standing
 import com.sceballosdev.soccerleagueapp.viewmodel.onlineresults.ResultViewModel
 import com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
     private var standingViewModel: StandingViewModel? = null
     private var resultViewModel: ResultViewModel? = null
-    //private var mSocket: Socket? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,18 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         // View
         setUpBindings(savedInstanceState)
-
-        /*mSocket = IO.socket("http://130.211.215.145:3000")
-        mSocket!!.connect()
-        mSocket!!.on("updateTournamentResult", Emitter.Listener { args ->
-            runOnUiThread(Runnable {
-                kotlin.run {
-                    var data = args[0]
-                    Log.i("STEVEN", data.toString());
-                    Toast.makeText(this, data.toString(), Toast.LENGTH_SHORT).show()
-                }
-            })
-        })*/
     }
 
     private fun setUpBindings(savedInstanceState: Bundle?) {
@@ -56,9 +50,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpListUpdate() {
 
-        resultViewModel?.initSocket()
-        resultViewModel?.getOnlineResults()?.observe(this, Observer { results: List<Result> ->
-            resultViewModel?.setResultsInRecyclerAdapter(results)
+        resultViewModel?.callResultsAPI()
+        resultViewModel?.getOnlineResults()?.observe(this, Observer { online_results: List<Result> ->
+            resultViewModel?.setResultsInRecyclerAdapter(online_results)
         })
 
         //CallStandings

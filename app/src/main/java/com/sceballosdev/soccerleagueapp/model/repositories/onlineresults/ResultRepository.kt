@@ -5,5 +5,6 @@ import com.sceballosdev.soccerleagueapp.model.Result
 
 interface ResultRepository {
     fun initSocket()
+    fun callResultsAPI()
     fun getOnlineResults(): MutableLiveData<List<Result>>
 }

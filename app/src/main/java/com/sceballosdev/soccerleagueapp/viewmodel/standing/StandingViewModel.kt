@@ -1,5 +1,6 @@
 package com.sceballosdev.soccerleagueapp.viewmodel.standing
 
+import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
@@ -12,8 +13,7 @@ import com.squareup.picasso.Picasso
 
 
 class StandingViewModel : ViewModel() {
-    private var standingObservable: StandingObservable =
-        StandingObservable()
+    private var standingObservable: StandingObservable = StandingObservable()
     private var recyclerStandingsAdapter: RecyclerStandingsAdapter? = null
     var selected: MutableLiveData<Standing> = MutableLiveData()
 
