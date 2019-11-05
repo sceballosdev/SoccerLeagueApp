@@ -1,5 +1,7 @@
 package com.sceballosdev.soccerleagueapp.viewmodel.matchdetails
 
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sceballosdev.soccerleagueapp.R
@@ -45,4 +47,17 @@ class MatchViewModel : ViewModel() {
         val matchDetail = getMatchDetailAt(index)
         selected.value = matchDetail
     }
+}
+
+@BindingAdapter("imageEventType")
+fun getImageResultAt(img: ImageView, eventType: String) {
+    val event = when (eventType) {
+        "YELLOW_CARD" -> R.drawable.yellow_card
+        "RED_CARD" -> R.drawable.red_card
+        "GOAL" -> R.drawable.ball
+        "PENAL" -> R.drawable.penalty
+        else -> R.drawable.ball
+    }
+
+    img.setImageResource(event)
 }
