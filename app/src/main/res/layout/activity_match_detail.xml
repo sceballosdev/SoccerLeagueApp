@@ -31,10 +31,10 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
-                android:onClick="onClickBtnClose"
+                android:layout_marginTop="16dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/str_content_description"
+                android:onClick="onClickBtnClose"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="?attr/actionModeCloseDrawable" />
@@ -68,7 +68,7 @@
                     android:id="@+id/imgVisitorTeam"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_marginEnd="32dp"
+                    android:layout_marginEnd="36dp"
                     android:contentDescription="@string/str_img_content_description"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,10 +80,10 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text='@{result.localGoals +" : "+result.visitorGoals}'
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:text='@{result.localGoals +" : "+result.visitorGoals}'
                     app:layout_constraintBottom_toBottomOf="@+id/imgLocalTeam"
                     app:layout_constraintEnd_toStartOf="@+id/imgVisitorTeam"
                     app:layout_constraintStart_toEndOf="@+id/imgLocalTeam"
@@ -95,10 +95,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
+                    android:text='@{result.currentTime + " min"}'
                     android:textColor="@color/colorCurrentTime"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:text='@{result.currentTime + " min"}'
                     app:layout_constraintEnd_toEndOf="@+id/textView3"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -136,12 +136,14 @@
 
             <TextView
                 android:id="@+id/textView5"
-                style="@style/style_txt_titles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/str_match_detal"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -160,6 +162,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5"
                 app:setAdapter="@{model.recyclerMatchDetailsAdapter}" />
+
+            <TextView
+                android:id="@+id/txtThereAreNotMatchDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/str_there_are_no_match_details"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/pbLoadingDetails"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="16dp"
+                android:indeterminateTint="@color/colorCurrentTime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

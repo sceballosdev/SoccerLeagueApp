@@ -9,10 +9,10 @@ import com.sceballosdev.soccerleagueapp.BR
 import com.sceballosdev.soccerleagueapp.model.Result
 import com.sceballosdev.soccerleagueapp.viewmodel.onlineresults.ResultViewModel
 
-class RecyclerResultsAdapter(var resultViewModel: ResultViewModel, var resource: Int) :
+class RecyclerResultsAdapter(private var resultViewModel: ResultViewModel, var resource: Int) :
     RecyclerView.Adapter<RecyclerResultsAdapter.CardResultHolder>() {
 
-    var results: List<Result>? = null
+    private var results: List<Result>? = null
 
     fun setResultsList(results: List<Result>?) {
         this.results = results

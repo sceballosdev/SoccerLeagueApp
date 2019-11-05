@@ -1,5 +1,6 @@
 package com.sceballosdev.soccerleagueapp.model.repositories.onlineresults
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
@@ -65,9 +66,15 @@ class ResultRepositoryImpl : ResultRepository {
                 }
             }
 
+            Log.i("SERGIO", "Partido juago ${result.id} ${result.isPlaying} ${result.currentTime}")
+
             if (position == -1) {
                 resultsList?.add(result)
+            } else if (result.isPlaying == false) {
+                resultsList?.removeAt(position)
             }
+            Log.i("SERGIO", "ResultList: ${resultsList?.size}")
+            Log.i("SERGIO", "OnlineList: ${onlineResults.value?.size}")
 
             onlineResults.postValue(resultsList)
         }
