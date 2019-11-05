@@ -83,6 +83,7 @@
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
+                    android:text='@{result.localGoals +" : "+result.visitorGoals}'
                     app:layout_constraintBottom_toBottomOf="@+id/imgLocalTeam"
                     app:layout_constraintEnd_toStartOf="@+id/imgVisitorTeam"
                     app:layout_constraintStart_toEndOf="@+id/imgLocalTeam"
@@ -97,6 +98,7 @@
                     android:textColor="@color/colorCurrentTime"
                     android:textSize="14sp"
                     android:textStyle="bold"
+                    android:text='@{result.currentTime + " min"}'
                     app:layout_constraintEnd_toEndOf="@+id/textView3"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
