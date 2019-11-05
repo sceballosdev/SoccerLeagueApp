@@ -6,10 +6,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.sceballosdev.soccerleagueapp.BR
+import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Match
 import com.sceballosdev.soccerleagueapp.viewmodel.matchdetails.MatchViewModel
 
-class RecyclerMatchDetailsAdapter(var matchViewModel: MatchViewModel, var resource: Int) :
+class RecyclerMatchDetailsAdapter(var matchViewModel: MatchViewModel) :
     RecyclerView.Adapter<RecyclerMatchDetailsAdapter.CardMatchDetailsHolder>() {
 
     var matchDetails: List<Match>? = null
@@ -37,7 +38,17 @@ class RecyclerMatchDetailsAdapter(var matchViewModel: MatchViewModel, var resour
     }
 
     fun getLayoutIdForPosition(position: Int): Int {
-        return resource
+
+        if (matchDetails?.get(position)?.typeEvent == "FIRST_TIME" || matchDetails?.get(position)?.typeEvent == "END_GAME")
+            return R.layout.custom_item_match_time
+
+        if (matchDetails?.get(position)?.isLocalEvent == true)
+            return R.layout.custom_item_match_local_detail
+
+        if (matchDetails?.get(position)?.isLocalEvent == false)
+            return R.layout.custom_item_match_visitor_detail
+
+        return R.layout.custom_item_match_local_detail
     }
 
     class CardMatchDetailsHolder(binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {

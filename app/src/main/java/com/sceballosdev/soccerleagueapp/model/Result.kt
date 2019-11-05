@@ -10,7 +10,7 @@ class Result(resultJson: JsonObject?) : Serializable {
     lateinit var visitorTeam: Team
     lateinit var localGoals: String
     lateinit var visitorGoals: String
-    var isPlaying: Boolean = false
+    var isPlaying: Boolean? = null
     lateinit var currentTime: String
 
     init {
@@ -24,7 +24,6 @@ class Result(resultJson: JsonObject?) : Serializable {
             visitorGoals = resultJson?.get(VISITOR_GOALS)?.asString
                 ?: "0"
             isPlaying = resultJson?.get(IS_PLAYING)?.asBoolean
-                ?: false
             currentTime = resultJson?.get(CURRENT_TIME)?.asString
                 ?: "0"
         } catch (e: Exception) {
