@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="model"
             type="com.sceballosdev.soccerleagueapp.viewmodel.standing.StandingViewModel" />
@@ -29,6 +31,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
+            <!-- android:visibility="@{result.loading ? View.GONE : View.VISIBLE}" -->
             <TextView
                 android:id="@+id/txt_title_screen"
                 style="@style/style_txt_titles"
@@ -37,6 +40,7 @@
                 android:text="@string/str_live_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvOnlineResults"
@@ -54,6 +58,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_title_screen"
                 app:layout_constraintVertical_bias="1.0"
                 app:setAdapter="@{result.recyclerResultsAdapter}" />
+
+            <ProgressBar
+                android:id="@+id/pbLoadingCurrentMatches"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="16dp"
+                android:indeterminateTint="@color/colorCurrentTime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title_screen" />
+
+            <TextView
+                android:id="@+id/txtThereAreNotMatches"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/str_there_are_no_matches"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_title_screen" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -162,7 +190,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvMatchDetails"
+                android:id="@+id/rvStandings"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
@@ -174,6 +202,19 @@
                 app:layout_constraintTop_toBottomOf="@+id/cardView2"
                 app:setAdapter="@{model.recyclerStandingsAdapter}" />
 
+            <ProgressBar
+                android:id="@+id/pbLoadingStandings"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginBottom="16dp"
+                android:indeterminateTint="@color/colorCurrentTime"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                app:layout_constraintStart_toStartOf="@+id/cardView2"
+                app:layout_constraintTop_toTopOf="@+id/cardView2" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -49,10 +49,17 @@ class MatchDetailActivity : AppCompatActivity() {
 
     private fun setUpListUpdate() {
 
-        //CallPlayersByTeam
         matchViewModel?.callDetailsByResultAPI(resultSelected?.id)
-        //getPlayersByTeam - Lista de jugadores
         matchViewModel?.getDetailsByResult()?.observe(this, Observer { matchDetails: List<Match> ->
+            if (matchDetails.isEmpty()) {
+                pbLoadingDetails.visibility = View.GONE
+                rvMatchDetails.visibility = View.INVISIBLE
+                txtThereAreNotMatchDetails.visibility = View.VISIBLE
+            } else {
+                pbLoadingDetails.visibility = View.GONE
+                rvMatchDetails.visibility = View.VISIBLE
+                txtThereAreNotMatchDetails.visibility = View.GONE
+            }
             matchViewModel?.setMatchDetailsInRecyclerAdapter(matchDetails)
         })
     }

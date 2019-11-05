@@ -7,4 +7,6 @@
     <string name="str_head_row_team">Equipo</string>
     <string name="str_content_description">team_shield</string>
     <string name="str_match_detal">Detalles</string>
+    <string name="str_there_are_no_matches">No hay partidos en vivo en el momento</string>
+    <string name="str_there_are_no_match_details">No hay detalles destacados aún</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.sceballosdev.soccerleagueapp.viewmodel.onlineresults
 
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,10 +14,6 @@ class ResultViewModel : ViewModel() {
     private var resultObservable: ResultObservable = ResultObservable()
     private var recyclerResultsAdapter: RecyclerResultsAdapter? = null
     var selected: MutableLiveData<Result> = MutableLiveData()
-
-    fun initSocket() {
-        resultObservable.initSocket()
-    }
 
     fun callResultsAPI() {
         resultObservable.callResultsAPI()
