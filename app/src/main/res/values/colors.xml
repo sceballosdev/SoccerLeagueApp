@@ -6,6 +6,8 @@
     <color name="colorCurrentTime">#94D64A</color>
     <color name="colorBackgroundTopView">#F0F0F0</color>
     <color name="colorBackgroundTranparent">#00FFFFFF</color>
+    <color name="colorYellowCard">#FFEB3B</color>
+    <color name="colorRedCard">#F44336</color>
     <color name="colorBackgroundFixedRow">#54FFC11B</color>
     <color name="colorTextNameTeam">#959595</color>
 </resources>
