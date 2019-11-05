@@ -28,7 +28,7 @@ class MatchViewModel : ViewModel() {
 
     fun getRecyclerMatchDetailsAdapter(): RecyclerMatchDetailsAdapter? {
         recyclerMatchDetailsAdapter =
-            RecyclerMatchDetailsAdapter(this, R.layout.custom_item_match_local_detail)
+            RecyclerMatchDetailsAdapter(this)
         return recyclerMatchDetailsAdapter
     }
 

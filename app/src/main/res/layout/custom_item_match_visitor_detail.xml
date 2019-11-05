@@ -4,6 +4,14 @@
 
     <data>
 
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="model"
+            type="com.sceballosdev.soccerleagueapp.viewmodel.matchdetails.MatchViewModel" />
+
     </data>
 
     <LinearLayout
@@ -19,7 +27,7 @@
             android:layout_gravity="center"
             android:layout_marginEnd="16dp"
             android:layout_weight="3"
-            android:text="10'"
+            android:text='@{model.getMatchDetailAt(position).time + " min"}'
             android:textAlignment="viewEnd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/constraintLayout"
@@ -40,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:text="Lionel Messi"
+                android:text="@{model.getMatchDetailAt(position).player.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

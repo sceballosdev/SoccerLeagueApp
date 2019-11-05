@@ -3,6 +3,13 @@
 
     <data>
 
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="model"
+            type="com.sceballosdev.soccerleagueapp.viewmodel.matchdetails.MatchViewModel" />
     </data>
 
     <LinearLayout
@@ -21,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="FT"
+            android:text="@{model.getMatchDetailAt(position).typeEvent}"
             android:textStyle="bold"
             android:textColor="@color/colorCurrentTime"
             android:textAlignment="center" />
