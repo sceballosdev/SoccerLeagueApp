@@ -15,4 +15,7 @@ interface ApiService {
 
     @GET("players/getByTeam/{team_id}")
     fun getPlayersByTeam(@Path("team_id") team_id: String): Call<JsonArray>
+
+    @GET("detail_matchs/getByTournamentResult/{tournament_result_id}")
+    fun getDetailsByResult(@Path("tournament_result_id") tournament_result_id: String): Call<JsonArray>
 }
