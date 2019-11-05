@@ -18,6 +18,7 @@
         android:layout_width="340dp"
         android:layout_height="130dp"
         android:layout_marginEnd="10dp"
+        android:onClick="@{() -> model_result.onItemClick(position)}"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp">
 

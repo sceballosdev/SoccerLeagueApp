@@ -50,12 +50,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpListUpdate() {
 
-        Log.i("Aquí vamos", "Aquí vamos")
-
         resultViewModel?.callResultsAPI()
-        resultViewModel?.getOnlineResults()?.observe(this, Observer { online_results: List<Result> ->
-            resultViewModel?.setResultsInRecyclerAdapter(online_results)
-        })
+        resultViewModel?.getOnlineResults()
+            ?.observe(this, Observer { online_results: List<Result> ->
+                resultViewModel?.setResultsInRecyclerAdapter(online_results)
+            })
 
         //CallStandings
         standingViewModel?.callStandings()
@@ -73,5 +72,11 @@ class MainActivity : AppCompatActivity() {
                 teamIntent.putExtra("TEAM", standing.team)
                 startActivity(teamIntent)
             })
+
+        resultViewModel?.getResultSelected()?.observe(this, Observer { result: Result ->
+            val resultIntent = Intent(applicationContext, MatchDetailActivity::class.java)
+            resultIntent.putExtra("RESULT", result)
+            startActivity(resultIntent)
+        })
     }
 }

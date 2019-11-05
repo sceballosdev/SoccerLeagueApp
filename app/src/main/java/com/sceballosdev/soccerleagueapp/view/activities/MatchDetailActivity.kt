@@ -1,6 +1,7 @@
 package com.sceballosdev.soccerleagueapp.view.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -54,5 +55,9 @@ class MatchDetailActivity : AppCompatActivity() {
         matchViewModel?.getDetailsByResult()?.observe(this, Observer { matchDetails: List<Match> ->
             matchViewModel?.setMatchDetailsInRecyclerAdapter(matchDetails)
         })
+    }
+
+    fun onClickBtnClose(view: View) {
+        finish()
     }
 }

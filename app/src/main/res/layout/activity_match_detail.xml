@@ -32,6 +32,7 @@
                 android:layout_height="32dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
+                android:onClick="onClickBtnClose"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/str_content_description"
                 app:layout_constraintStart_toStartOf="parent"
