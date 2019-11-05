@@ -3,6 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="model"
+            type="com.sceballosdev.soccerleagueapp.viewmodel.matchdetails.MatchViewModel" />
+
+        <variable
+            name="result"
+            type="com.sceballosdev.soccerleagueapp.model.Result" />
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,7 +56,6 @@
                     android:layout_height="80dp"
                     android:layout_marginStart="36dp"
                     android:contentDescription="@string/str_img_content_description"
-                    app:imageUrlShieldOnline="@{model_result.getResultAt(position).localTeam.shield}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -59,32 +68,11 @@
                     android:layout_height="80dp"
                     android:layout_marginEnd="32dp"
                     android:contentDescription="@string/str_img_content_description"
-                    app:imageUrlShieldOnline="@{model_result.getResultAt(position).visitorTeam.shield}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.25"
                     app:srcCompat="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@{model_result.getResultAt(position).localTeam.name}"
-                    app:layout_constraintEnd_toEndOf="@+id/imgLocalTeam"
-                    app:layout_constraintStart_toStartOf="@+id/imgLocalTeam"
-                    app:layout_constraintTop_toBottomOf="@+id/imgLocalTeam" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@{model_result.getResultAt(position).visitorTeam.name}"
-                    app:layout_constraintEnd_toEndOf="@+id/imgVisitorTeam"
-                    app:layout_constraintStart_toStartOf="@+id/imgVisitorTeam"
-                    app:layout_constraintTop_toBottomOf="@+id/imgVisitorTeam" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -116,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:text="@{result.localTeam.name}"
                     android:textColor="@color/colorTextNameTeam"
                     app:layout_constraintEnd_toEndOf="@+id/imgLocalTeam"
                     app:layout_constraintStart_toStartOf="@+id/imgLocalTeam"
@@ -125,6 +114,7 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{result.visitorTeam.name}"
                     android:layout_marginTop="8dp"
                     android:textColor="@color/colorTextNameTeam"
                     app:layout_constraintEnd_toEndOf="@+id/imgVisitorTeam"
