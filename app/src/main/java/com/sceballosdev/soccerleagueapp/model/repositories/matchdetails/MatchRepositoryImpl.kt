@@ -1,5 +1,6 @@
 package com.sceballosdev.soccerleagueapp.model.repositories.matchdetails
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
