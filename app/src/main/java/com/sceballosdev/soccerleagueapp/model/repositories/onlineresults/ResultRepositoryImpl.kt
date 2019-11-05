@@ -16,7 +16,7 @@ import retrofit2.Response
 class ResultRepositoryImpl : ResultRepository {
 
     private var mSocket: Socket? = null
-    private var online_results = MutableLiveData<List<Result>>()
+    private var onlineResults = MutableLiveData<List<Result>>()
     private var resultsList: ArrayList<Result>? = ArrayList()
 
     override fun callResultsAPI() {
@@ -35,7 +35,7 @@ class ResultRepositoryImpl : ResultRepository {
                     val result = Result(jsonObject)
                     resultsList?.add(result)
                 }
-                online_results.value = resultsList
+                onlineResults.value = resultsList
             }
         })
         initSocket()
@@ -69,12 +69,12 @@ class ResultRepositoryImpl : ResultRepository {
                 resultsList?.add(result)
             }
 
-            online_results.postValue(resultsList)
+            onlineResults.postValue(resultsList)
         }
     }
 
     override fun getOnlineResults(): MutableLiveData<List<Result>> {
-        return online_results
+        return onlineResults
     }
 
 }
