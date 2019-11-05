@@ -7,4 +7,5 @@
     <color name="colorBackgroundTopView">#F0F0F0</color>
     <color name="colorBackgroundTranparent">#00FFFFFF</color>
     <color name="colorBackgroundFixedRow">#54FFC11B</color>
+    <color name="colorTextNameTeam">#959595</color>
 </resources>

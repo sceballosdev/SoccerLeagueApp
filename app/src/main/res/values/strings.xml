@@ -6,4 +6,5 @@
     <string name="str_img_content_description">En vivo</string>
     <string name="str_head_row_team">Equipo</string>
     <string name="str_content_description">team_shield</string>
+    <string name="str_match_detal">Detalles</string>
 </resources>
