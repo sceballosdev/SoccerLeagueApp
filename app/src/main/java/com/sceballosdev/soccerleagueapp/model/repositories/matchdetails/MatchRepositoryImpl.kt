@@ -1,9 +1,12 @@
 package com.sceballosdev.soccerleagueapp.model.repositories.matchdetails
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.github.nkzawa.socketio.client.IO
+import com.github.nkzawa.socketio.client.Socket
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.sceballosdev.soccerleagueapp.model.Match
 import com.sceballosdev.soccerleagueapp.model.retrofit.ApiAdapter
 import retrofit2.Call
@@ -12,11 +15,9 @@ import retrofit2.Response
 
 class MatchRepositoryImpl : MatchRepository {
 
+    private var mSocket: Socket? = null
     private var matchDetails = MutableLiveData<List<Match>>()
-
-    override fun initSocket() {
-
-    }
+    private var detailsList: ArrayList<Match>? = ArrayList()
 
     override fun callDetailsByResultAPI(tournament_result_id: String?) {
         val detailsList: ArrayList<Match>? = ArrayList()
@@ -35,10 +36,25 @@ class MatchRepositoryImpl : MatchRepository {
                     val detailMatch = Match(jsonObject)
                     detailsList?.add(detailMatch)
                 }
-                //VIEW
                 matchDetails.value = detailsList
             }
         })
+
+        initSocket()
+    }
+
+    override fun initSocket() {
+        mSocket = IO.socket("http://130.211.215.145:3000")
+        mSocket!!.connect()
+        /*mSocket!!.on("changeDetailMatch") { args ->
+
+            val jsonObject = JsonParser().parse(args[0].toString()) as JsonObject
+            val detail = Match(jsonObject)
+
+            detailsList?.add(detail)
+
+            matchDetails.postValue(detailsList)
+        }*/
     }
 
     override fun getDetailsByResult(): MutableLiveData<List<Match>> {
