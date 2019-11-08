@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sceballosdev.soccerleagueapp.R
 import com.sceballosdev.soccerleagueapp.model.Match
+import com.sceballosdev.soccerleagueapp.model.Result
 import com.sceballosdev.soccerleagueapp.model.observables.matchdetails.MatchObservable
 import com.sceballosdev.soccerleagueapp.view.adapters.RecyclerMatchDetailsAdapter
 
@@ -39,13 +40,8 @@ class MatchViewModel : ViewModel() {
         return matchDetails?.get(position)
     }
 
-    fun getMatchDetailSelected(): MutableLiveData<Match> {
-        return selected
-    }
-
-    fun onItemClick(index: Int) {
-        val matchDetail = getMatchDetailAt(index)
-        selected.value = matchDetail
+    fun getMatchResult(): MutableLiveData<Result> {
+        return matchObservable.getMatchResult()
     }
 }
 

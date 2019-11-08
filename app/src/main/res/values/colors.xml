@@ -9,5 +9,6 @@
     <color name="colorYellowCard">#FFEB3B</color>
     <color name="colorRedCard">#F44336</color>
     <color name="colorBackgroundFixedRow">#54FFC11B</color>
+    <color name="colorBackgroundVisitorDetail">#22FFC11B</color>
     <color name="colorTextNameTeam">#959595</color>
 </resources>

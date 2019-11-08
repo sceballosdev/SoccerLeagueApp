@@ -44,10 +44,10 @@ class MatchDetailActivity : AppCompatActivity() {
         Picasso.get().load(resultSelected?.localTeam?.shield).into(imgLocalTeam)
         Picasso.get().load(resultSelected?.visitorTeam?.shield).into(imgVisitorTeam)
 
-        setUpListUpdate()
+        setUpListUpdate(activityMatchDetailBinding)
     }
 
-    private fun setUpListUpdate() {
+    private fun setUpListUpdate(activityMatchDetailBinding: ActivityMatchDetailBinding) {
 
         matchViewModel?.callDetailsByResultAPI(resultSelected?.id)
         matchViewModel?.getDetailsByResult()?.observe(this, Observer { matchDetails: List<Match> ->
@@ -61,6 +61,10 @@ class MatchDetailActivity : AppCompatActivity() {
                 txtThereAreNotMatchDetails.visibility = View.GONE
             }
             matchViewModel?.setMatchDetailsInRecyclerAdapter(matchDetails)
+        })
+
+        matchViewModel?.getMatchResult()?.observe(this, Observer { matchResult: Result ->
+            activityMatchDetailBinding.result = matchResult
         })
     }
 

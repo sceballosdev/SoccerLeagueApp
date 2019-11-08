@@ -10,7 +10,7 @@ interface ApiService {
     @GET("tournament_standings/get")
     fun getStandings(): Call<JsonArray>
 
-    @GET("tournament_results/getIsPlaying")
+    @GET("tournament_results/getIsPlaying/true")
     fun getOnlineResults(): Call<JsonArray>
 
     @GET("players/getByTeam/{team_id}")

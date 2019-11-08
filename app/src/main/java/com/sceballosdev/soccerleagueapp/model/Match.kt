@@ -16,9 +16,15 @@ class Match(matchJson: JsonObject?) : Serializable {
             id = matchJson?.get(ID)?.asString ?: "00"
             tournamentResult = Result(matchJson?.getAsJsonObject(TOURNAMENT_RESULT))
             typeEvent = matchJson?.get(EVENT_TYPE)?.asString ?: "IDK"
-            player = Player(matchJson?.getAsJsonObject(PLAYER))
-            time = matchJson?.get(TIME)?.asString ?: "0"
-            isLocalEvent = matchJson?.get(IS_LOCAL_EVENT)?.asBoolean ?: false
+            if (matchJson?.get(PLAYER)?.isJsonNull !== null) {
+                player = Player(matchJson.getAsJsonObject(PLAYER))
+            }
+            if (matchJson?.get(TIME)?.isJsonNull  !== null) {
+                time = matchJson.get(TIME)?.asString ?: "0"
+            }
+            if (matchJson?.get(IS_LOCAL_EVENT)?.isJsonNull  !== null) {
+                isLocalEvent = matchJson.get(IS_LOCAL_EVENT)?.asBoolean ?: false
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
