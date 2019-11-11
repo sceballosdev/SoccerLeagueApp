@@ -37,9 +37,9 @@ class ResultRepositoryImpl : ResultRepository {
                     resultsList?.add(result)
                 }
                 onlineResults.value = resultsList
+                initSocket()
             }
         })
-        initSocket()
     }
 
     override fun initSocket() {
@@ -51,6 +51,7 @@ class ResultRepositoryImpl : ResultRepository {
             val jsonObject = JsonParser().parse(args[0].toString()) as JsonObject
             val result = Result(jsonObject)
 
+            Log.i(TAG, "Json $jsonObject")
             var position: Int = -1
 
             resultsList?.forEachIndexed { index, element ->
@@ -66,15 +67,22 @@ class ResultRepositoryImpl : ResultRepository {
                 }
             }
 
-            if (position == -1) {
+            if (position == -1 && result.isPlaying == true) {
                 resultsList?.add(result)
             } else if (result.isPlaying == false) {
-                resultsList?.removeAt(position)
+                val findResult = resultsList?.firstOrNull { it.id == result.id }
+                if (findResult != null) {
+                    resultsList?.removeAt(position)
+                }
             }
 
+            Log.i(TAG, "Results LiveData ${onlineResults.value?.size} ")
+            Log.i(TAG, "Results LocalData ${resultsList?.size} ")
             onlineResults.postValue(resultsList)
         }
     }
+
+    private val TAG: String = "SERGIO"
 
     override fun getOnlineResults(): MutableLiveData<List<Result>> {
         return onlineResults
